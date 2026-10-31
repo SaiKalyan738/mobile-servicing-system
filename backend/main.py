@@ -1,5 +1,7 @@
 from backend.database import get_connection
 
+from backend.database import create_table
+
 from datetime import date
 from uuid import uuid4
 
@@ -15,6 +17,8 @@ app = FastAPI(
     description="API for tracking mobile repair requests",
     version="0.3.0",
 )
+
+create_table()
 
 class ServiceRequestCreate(BaseModel):
     case_id: str = Field(min_length=3, max_length=30)
