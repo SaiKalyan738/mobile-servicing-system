@@ -2,6 +2,8 @@ from backend.database import get_connection
 
 from backend.database import create_table
 
+from backend.seed_data import insert_sample_data
+
 from datetime import date
 from uuid import uuid4
 
@@ -19,6 +21,8 @@ app = FastAPI(
 )
 
 create_table()
+insert_sample_data()
+
 
 class ServiceRequestCreate(BaseModel):
     case_id: str = Field(min_length=3, max_length=30)

@@ -1,4 +1,6 @@
 
+from datetime import datetime, timezone
+
 from backend.database import get_connection, create_table
 
 
@@ -49,7 +51,36 @@ def insert_sample_data():
             sample_services,
         )
 
-    print("Sample service records inserted.")
+        # Add initial history for demo services if missing.
+        for service in sample_services:
+            service_id = service[0]
+            current_status = service[4]
+
+            existing_history = connection.execute(
+                """
+                SELECT id FROM service_status_history
+                WHERE service_id = ?
+                LIMIT 1
+                """,
+                (service_id,),
+            ).fetchone()
+
+            if existing_history is None:
+                connection.execute(
+                    """
+                    INSERT INTO service_status_history
+                    (service_id, old_status, new_status, changed_at)
+                    VALUES (?, ?, ?, ?)
+                    """,
+                    (
+                        service_id,
+                        None,
+                        current_status,
+                        datetime.now(timezone.utc).isoformat(),
+                    ),
+                )
+
+    print("Sample service records are ready.")
 
 
 if __name__ == "__main__":
