@@ -164,3 +164,29 @@ Through this project, I practised:
 - Automated testing using pytest.
 - Error handling.
 
+## 12. 🌐 Live Demo
+
+**Try the application here:**
+
+[🚀 Mobile Servicing System – Live Website](https://mobile-servicing-system.streamlit.app/)
+
+**Backend API Documentation:**
+
+[FastAPI Swagger UI](https://mobile-servicing-system-api.onrender.com/docs)
+
+**GitHub Repository:**
+
+[View Source Code](https://github.com/SaiKalyan738/mobile-servicing-system)
+
+> The application is publicly accessible. No login is required. Please note that this is a portfolio demonstration project and uses free-tier hosting.
+
+## 13. 📸 Application Screenshots
+
+Dashboard
+
+Create Service Request
+
+Track Service
+
+Service History
+
