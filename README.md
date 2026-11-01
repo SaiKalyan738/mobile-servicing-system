@@ -1,111 +1,141 @@
 # Mobile Servicing System
 
-A full-stack mobile phone servicing management application built using Python, FastAPI, Streamlit and SQLite.
+A full-stack mobile phone servicing management application built with
+**Python, FastAPI, Streamlit, and SQLite**.
+
+## 🌐 Live Demo
+
+-   **Live Application:** [Mobile Servicing
+    System](https://mobile-servicing-system.streamlit.app/)
+-   **Backend API Documentation:** [FastAPI Swagger
+    UI](https://mobile-servicing-system-api.onrender.com/docs)
+-   **GitHub Repository:**
+    [SaiKalyan738/mobile-servicing-system](https://github.com/SaiKalyan738/mobile-servicing-system)
+
+The application is publicly accessible and does not require users to log
+in. This is a portfolio demonstration project hosted on free-tier
+services.
+
+
 
 ## 1. Project Overview
 
-The Mobile Servicing System helps manage mobile phone repair requests and track their repair progress.
+The Mobile Servicing System helps manage mobile phone repair requests
+and track their repair progress.
 
-Customers can track their service requests using a Service ID or Case ID.
-
-The application also maintains a service status history to record changes throughout the repair process.
+Customers can track service requests using a **Service ID** or **Case
+ID**. The application also maintains a service status history to record
+changes throughout the repair process.
 
 ## 2. Technologies Used
 
 | Technology | Purpose |
 |---|---|
-| Python | Backend programming |
+| Python | Backend programming and Application logic |
 | FastAPI | REST API development |
-| Streamlit | Frontend interface |
-| SQLite | Database |
-| Pydantic | Request data validation |
-| Requests | Frontend API communication |
-| Pytest | Automated testing |
-| Uvicorn | Backend server |
+| Streamlit | Frontend User Interface |
+| SQLite | Database Management and Data Storage |
+| Pydantic | Request Data Validation |
+| Requests | Frontend API Communication |
+| Pytest | Automated Testing |
+| Uvicorn | Running the FastAPI Backend Server |
 
 ## 3. Main Features
 
-- Create mobile service requests.
-- Generate unique Service IDs.
-- Track services using Service ID or Case ID.
-- View all service requests.
-- Update repair status.
-- Validate repair status transitions.
-- Maintain service status history.
-- Display service dashboard information.
-- Automated API testing.
+-   Create mobile service requests.
+-   Generate unique Service IDs.
+-   Track services using Service ID or Case ID.
+-   View all service requests.
+-   Update repair status.
+-   Validate repair status transitions.
+-   Maintain service status history.
+-   Display service dashboard information.
+-   Automated API testing.
 
 ## 4. Repair Status Workflow
 
 The application follows this status sequence:
 
-Received → Diagnosis → Repair in Progress → Ready for Collection → Collected
+**Received → Diagnosis → Repair in Progress → Ready for Collection →
+Collected**
 
 Invalid status transitions are rejected.
 
 ## 5. Project Structure
 
-```text
+``` text
 MOBILE SERVICING SYSTEM/
-│
 ├── backend/
 │   ├── main.py
 │   ├── database.py
 │   ├── seed_data.py
 │   ├── tracking.py
 │   └── mobile_servicing.db
-│
 ├── frontend/
 │   └── app.py
-│
 ├── tests/
 │   └── test_api.py
-│
+├── screenshots/
+│   ├── dashboard.png
+│   ├── create-service.png
+│   ├── track-service.png
+│   └── service-history.png
 ├── requirements.txt
 └── README.md
 ```
 
 ## 6. Installation
 
-Clone or download the project.
+### Clone the repository
 
-Open the project directory in Command Prompt.
+``` bash
+git clone https://github.com/SaiKalyan738/mobile-servicing-system.git
+cd "mobile-servicing-system"
+```
 
-Create a virtual environment:
+### Create and activate a virtual environment
 
-```bash
+**Windows Command Prompt:**
+
+``` bat
 python -m venv .venv
+.venv\Scripts\activate.bat
 ```
 
-Activate it on Windows:
+**macOS / Linux:**
 
-```bash
-.venv\Scripts\activate
+``` bash
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
-Install dependencies:
+### Install dependencies
 
-```bash
-pip install -r requirements.txt
+``` bash
+python -m pip install -r requirements.txt
 ```
 
-## 7. Run the Application
+## 7. Run the Application Locally
 
-Start the FastAPI backend:
+Open two terminals from the project root and activate the virtual
+environment in each.
 
-```bash
+### Terminal 1 --- Start the FastAPI backend
+
+``` bash
 python -m uvicorn backend.main:app --reload
 ```
 
-API documentation:
+API documentation: <http://127.0.0.1:8000/docs>
 
-http://127.0.0.1:8000/docs
+### Terminal 2 --- Start the Streamlit frontend
 
-Start the Streamlit frontend in a second terminal:
-
-```bash
+``` bash
 python -m streamlit run frontend/app.py
 ```
+
+Streamlit will display the local application URL in the terminal,
+usually `http://localhost:8501`.
 
 ## 8. Database
 
@@ -113,22 +143,23 @@ The project uses SQLite.
 
 Main database tables:
 
-**service_requests**
-- Service ID
-- Case ID
-- Device model
-- Issue description
-- Current status
-- Received date
+### `service_requests`
 
-**service_status_history**
-- Service ID
-- Old status
-- New status
-- Changed timestamp
+-   Service ID
+-   Case ID
+-   Device model
+-   Issue description
+-   Current status
+-   Received date
+
+### `service_status_history`
+
+-   Service ID
+-   Old status
+-   New status
+-   Changed timestamp
 
 ## 9. API Endpoints
-
 | Method | Endpoint | Purpose |
 |---|---|---|
 | GET | `/` | API welcome message |
@@ -139,54 +170,62 @@ Main database tables:
 | PATCH | `/services/{service_id}/status` | Update repair status |
 | GET | `/services/{service_id}/history` | View service history |
 
+For the interactive API documentation, visit the [live Swagger
+UI](https://mobile-servicing-system-api.onrender.com/docs).
+
 ## 10. Automated Testing
 
-Run tests using:
+Run the tests from the project root:
 
-```bash
+``` bash
 python -m pytest -v
 ```
 
-The project currently has 14 passing automated tests.
 
-## 11. Learning Outcomes
+## 11. Application Screenshots
 
-Through this project, I practised:
 
-- Python application development.
-- REST API development using FastAPI.
-- Frontend development using Streamlit.
-- SQLite database operations.
-- API integration.
-- Data validation.
-- Status transition validation.
-- Audit logging.
-- Automated testing using pytest.
-- Error handling.
+### Dashboard
 
-## 12. 🌐 Live Demo
+![Mobile Servicing System Dashboard](screenshots/dashboard.png)
 
-**Try the application here:**
+### Create Service Request
 
-[🚀 Mobile Servicing System – Live Website](https://mobile-servicing-system.streamlit.app/)
+![Create Service Request](screenshots/create-service.png)
 
-**Backend API Documentation:**
+### Track Service
 
-[FastAPI Swagger UI](https://mobile-servicing-system-api.onrender.com/docs)
+![Track Service](screenshots/track-service.png)
 
-**GitHub Repository:**
+### Service History
 
-[View Source Code](https://github.com/SaiKalyan738/mobile-servicing-system)
+![Service History](screenshots/service-history.png)
 
-> The application is publicly accessible. No login is required. Please note that this is a portfolio demonstration project and uses free-tier hosting.
+## 12. Learning Outcomes
 
-## 13. 📸 Application Screenshots
+Through this project, I gained practical knowledge in the listed below:
 
-Dashboard
+-   Python application development.
+-   REST API development using FastAPI.
+-   Frontend development using Streamlit.
+-   SQLite database operations.
+-   API integration.
+-   Data validation.
+-   Status transition validation.
+-   Audit logging.
+-   Automated testing using pytest.
+-   Error handling.
 
-Create Service Request
+## 13. Future Improvements
 
-Track Service
+-   Add authentication and role-based access for staff/admin users.
+-   Move to a persistent hosted database for reliable long-term data
+    storage.
+-   Add stronger API security and rate limiting.
+-   Improve deployment monitoring and error logging.
 
-Service History
+------------------------------------------------------------------------
 
+**Note:** This application is intended as a learning and portfolio
+demonstration project. Avoid entering real customer personal or
+sensitive information.
