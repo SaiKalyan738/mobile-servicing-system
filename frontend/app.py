@@ -6,7 +6,10 @@ import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 
-API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
+API_URL = st.secrets.get(
+    "API_URL",
+    os.getenv("API_URL", "http://127.0.0.1:8000")
+)
 
 STATUSES = [
     "Received",
